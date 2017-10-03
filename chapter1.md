@@ -10,8 +10,8 @@ type: NormalExercise
 lang: r
 xp: 100
 skills: 1
-key: 3248e5b19d
-key: 4af7ca0921
+key: 94e08a2059
+key: 30cffc258a
 ```
 
 What is the sum of the first $n$ positive integers? 
@@ -68,9 +68,9 @@ n*(n+1)/2
 `@sct`
 ```{r}
 # first instruction  
-test_object("n", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
-test_object("x", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
-test_output_contains ("12332424", incorrect_msg = "Take a look at your code for the second instruction.")
+#test_object("n", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
+#test_object("x", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
+#test_output_contains ("12332424", incorrect_msg = "Take a look at your code for the second instruction.")
 # General 
 test_error() 
 success_msg("Good job ! Let`s apply this to another question")
@@ -86,9 +86,9 @@ type: NormalExercise
 lang: r
 xp: 100
 skills: 1
-key: 7f4e22a3d6
+key: a4f9f1593e
 skills: 1
-key: 78af400688
+key: f6a5321f26
 We can use the formula $ n(n+1)/2 $ to quickly compute this quantity.
 
 `@instructions`
@@ -119,10 +119,10 @@ n*(n+1)/2
 `@sct`
 ```{r}
 # test n 
-test_object("n", incorrect_msg = "Something is wrong with `n`. Make sure you have assigned the correct value to `n`.")
+#test_object("n", incorrect_msg = "Something is wrong with `n`. Make sure you have assigned the correct value to `n`.")
 
 # test correct output
-test_output_contains ("(n*(n+1)/2)", incorrect_msg = "Take a look at your code for the second instruction.")
+#test_output_contains ("(n*(n+1)/2)", incorrect_msg = "Take a look at your code for the second instruction.")
 
 # General 
 test_error() 
@@ -141,10 +141,10 @@ type: MultipleChoiceExercise
 lang: r
 xp: 50
 skills: 1
-key: 0ac73f486e
+key: 3641f402c9
 xp: 50
 skills: 1
-key: 88a430c36e
+key: af7e628c71
 sum(x)
 ```
 
