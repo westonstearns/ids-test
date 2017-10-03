@@ -1,130 +1,174 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title                : R Basics 
+description          : In this course we introduce you to the basics of computing and analyzing data in the user-friendly and helpful R interface. This first chapter starts with the very basics of functions, objects to get us acquainted with the world of R. 
 
 ---
-## A really bad movie
-
-```yaml
-type: MultipleChoiceExercise
-lang: r
-xp: 50
-skills: 1
-key: 32682c3f60
-```
-
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
-
-`@instructions`
-- Adventure
-- Action
-- Animation
-- Comedy
-
-`@hint`
-Have a look at the plot. Which color does the point with the lowest rating have?
-
-`@pre_exercise_code`
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
-
----
-## More movies
+## Using variables 1
 
 ```yaml
 type: NormalExercise
 lang: r
 xp: 100
 skills: 1
-key: ff6ebdff9f
+key: 3248e5b19d
+key: 4af7ca0921
 ```
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
+What is the sum of the first $n$ positive integers? 
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+We can use the formula $ n(n+1)/2 $ to quickly compute this quantity.
+
 
 `@instructions`
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+- Define 'n=100'
+- Then use R to compute the sum of 1 through 100 using the formula $ n(n+1)/2$. What is the sum?
 
 `@hint`
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
+- Define `n` to be 100 in one line and simply type the formula using R code in the second line. 
+- Remember that in R you multiply using `*`.
 
 `@pre_exercise_code`
 ```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-load(url("https://s3.amazonaws.com/assets.datacamp.com/course/teach/movies.RData"))
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"), c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
+# no pec
 ```
 
 `@sample_code`
 ```{r}
-# movie_selection is available in your workspace
+# Here is how you compute the sum for the first 20 integers
+20*(20+1)/2 
 
-# Check out the structure of movie_selection
+# However, we can define a variable to use the formula for other values of n
+n <- 20
+n*(n+1)/2
 
+n <- 25
+n*(n+1)/2
 
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+# Below, write your code to calculate the sum of the first 100 integers
 
 ```
 
 `@solution`
 ```{r}
-# movie_selection is available in your workspace
+# Here is how you compute the sum for the first 20 integers
+20*(20+1)/2 
 
-# Check out the structure of movie_selection
-str(movie_selection)
+# However, we can define a variable to use the formula for other values of n
+n <- 20
+n*(n+1)/2
 
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
+n <- 25
+n*(n+1)/2
 
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+# Below, write your code to calculate the sum of the first 100 integers 
+n <- 100
+n*(n+1)/2 
 ```
 
 `@sct`
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+# first instruction  
+test_object("n", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
+test_object("x", incorrect_msg = "Make sure that you use `n` as your variable name and that you have assigned the correct value to `n`.")
+test_output_contains ("12332424", incorrect_msg = "Take a look at your code for the second instruction.")
+# General 
+test_error() 
+success_msg("Good job ! Let`s apply this to another question")
+```
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
+---
+## Using variables 2
 
-test_object("good_movies")
+```yaml
+type: NormalExercise
+lang: r
+type: NormalExercise
+lang: r
+xp: 100
+skills: 1
+key: 7f4e22a3d6
+skills: 1
+key: 78af400688
+We can use the formula $ n(n+1)/2 $ to quickly compute this quantity.
 
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
+`@instructions`
+- Use the same formula as the last exercise but substitute `n`
 
-test_error()
 
-success_msg("Good work!")
+`@hint`
+Use the same R code as you used in the first question after changing the value of `n`.
+
+`@pre_exercise_code`
+```{r}
+# no pec
+```
+
+`@sample_code`
+```{r}
+# Below, write you code to calculate the sum of the first 1000 integers 
+
+```
+
+`@solution`
+```{r}
+# Below, write you code to calculate the sum of the first 1000 integers 
+n <- 1000
+n*(n+1)/2
+```
+
+`@sct`
+```{r}
+# test n 
+test_object("n", incorrect_msg = "Something is wrong with `n`. Make sure you have assigned the correct value to `n`.")
+
+# test correct output
+test_output_contains ("(n*(n+1)/2)", incorrect_msg = "Take a look at your code for the second instruction.")
+
+# General 
+test_error() 
+success_msg("Good job ! Let`s get to work on another question!")
+```
+
+---
+## Functions
+
+```yaml
+type: MultipleChoiceExercise
+lang: r
+xp: 50
+skills: 1
+type: MultipleChoiceExercise
+lang: r
+xp: 50
+skills: 1
+key: 0ac73f486e
+xp: 50
+skills: 1
+key: 88a430c36e
+sum(x)
+```
+
+Based on the result, what do you think the functions `seq` and `sum` do? You can use the help system.
+
+`@instructions`
+- sum creates a list of numbers and seq adds them up. 
+- seq creates a list of numbers and sum adds them up. 
+- seq computes the difference between two arguments and sum computes the sum of 1 through 1000. 
+- sum always returns the same number
+
+`@hint`
+Go to R console and type `seq(1,5)`. See what you get. Then got the R console again and type `sum(seq(1,5))`. Change the `5` to other numbers.
+
+`@pre_exercise_code`
+```{r}
+# no pec
+```
+
+`@sct`
+```{r}
+msg1 = "Try again! Read the choices carefully. Try again."
+msg2 = "Well done. Proceed to the next exercise."
+msg3 = "There`s no specificaton of 1 to 1000 for sum. Try again."
+msg4 = "Read the help file for sum by typing `?sum` in the R console."
+test_mc(correct = 2, feedback_msgs = c(msg1,msg2,msg3,msg4))
 ```
